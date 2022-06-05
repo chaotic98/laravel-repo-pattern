@@ -14,14 +14,14 @@ class PostController extends Controller
     public function index()
     {
         return response()->json([
-            'data' => $this->postRepository->getAllPosts()
+            'data' => $this->postRepository->getAll()
         ]);
     }
 
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
-        $this->postRepository->createPost($data);
+        $this->postRepository->create($data);
 
         return response()->json([
             'data' =>  $data
@@ -33,7 +33,7 @@ class PostController extends Controller
     public function show($id)
     {
         return response()->json([
-            'data' => $this->postRepository->getPostById($id)
+            'data' => $this->postRepository->findById($id)
         ]);
     }
 
@@ -41,7 +41,7 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request,$id)
     {
         $data = $request->validated();
-        $this->postRepository->updatePost($id, $data);
+        $this->postRepository->update($id, $data);
 
         return response()->json([
             'data' => $data
@@ -50,7 +50,7 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $this->postRepository->deletePost($id);
+        $this->postRepository->delete($id);
 
         return response()->json(null,204);
     }
