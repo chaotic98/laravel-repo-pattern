@@ -2,11 +2,8 @@
 
 namespace App\Repositories\Post;
 
-interface PostRepositoryInterface
+use App\Repositories\BaseRepositoryInterface;
+
+interface PostRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getAllPosts();
-    public function getPostById($id);
-    public function deletePost($id);
-    public function createPost(array $postDetails);
-    public function updatePost($id, array $newData);
 }
